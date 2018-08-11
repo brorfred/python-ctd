@@ -6,6 +6,7 @@ from pandas import DataFrame, Index, Series
 from .ctd import (
     asof,
     from_btl,
+    from_bl,
     from_cnv,
     from_edf,
     from_fsi,
@@ -67,6 +68,7 @@ __all__ = plotting_functions + [
     despike,
     from_cnv,
     from_btl,
+    from_bl,
     from_edf,
     from_fsi,
     lp_filter,
@@ -92,6 +94,7 @@ if HAS_MATPLOTLIB:
 DataFrame.split = split
 DataFrame.from_cnv = staticmethod(from_cnv)
 DataFrame.from_btl = staticmethod(from_btl)
+DataFrame.from_bt  = staticmethod(from_bl)
 DataFrame.from_edf = staticmethod(from_edf)
 DataFrame.from_fsi = staticmethod(from_fsi)
 DataFrame.press_check = press_check
