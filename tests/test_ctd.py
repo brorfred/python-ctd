@@ -2,6 +2,8 @@ from __future__ import absolute_import, division, print_function
 
 from collections import OrderedDict
 from io import StringIO
+from tempfile import gettempdir
+import os
 
 from ctd import (
     DataFrame,
@@ -212,8 +214,8 @@ def section():
         cast = proc_ctd(fname)
         name = Path(fname).stem
         section.update({name: cast})
-        lon.append(cast.longitude.mean())
-        lat.append(cast.latitude.mean())
+        lon.append(cast["longitude"].mean())
+        lat.append(cast["latitude"].mean())
 
     # Section.
     section = Panel.fromDict(section)
@@ -225,3 +227,4 @@ def test_section():
     CT = data['section'].minor_xs('CT')
     CT.lon, CT.lat = data['lon'], data['lat']
     fig, ax, cb = plot_section(CT, reverse=True)
+
